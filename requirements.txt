@@ -1,0 +1,8 @@
+Django>=4.2
+djangorestframework
+psycopg2-binary
+django-filter
+python-dotenv
+python-decouple
+pytest
+pytest-django
