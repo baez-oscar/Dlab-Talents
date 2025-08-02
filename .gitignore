@@ -1,0 +1,5 @@
+# Ignorar todos los PDFs
+*.pdf
+
+# Pero NO ignorar este PDF específico
+!media/demo.pdf
