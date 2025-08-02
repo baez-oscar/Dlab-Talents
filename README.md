@@ -1,4 +1,4 @@
-#  dTalent Recibos Online – Backend API
+# 📄 dTalent Recibos Online – Backend API
 
 API RESTful desarrollada en **Django + Django REST Framework** para gestionar usuarios y recibos de sueldo digitales. Este backend permite autenticación, consulta filtrada de usuarios y recibos, así como la descarga de archivos PDF de los mismos.
 
@@ -6,13 +6,13 @@ API RESTful desarrollada en **Django + Django REST Framework** para gestionar us
 
 ##  Funcionalidades
 
-- Autenticación con token (`Authorization: Token <token>`)
-- Gestión de usuarios con filtrado por nacionalidad
-- Listado y filtrado de recibos (por año, mes, empleado)
-- Visualización y descarga de recibos PDF
-- Protección por permisos de acceso (`IsAuthenticated`)
-- Filtros por URL query
-- Datos de ejemplo para pruebas
+-  Autenticación con token (`Authorization: Token <token>`)
+-  Gestión de usuarios con filtrado por nacionalidad
+-  Listado y filtrado de recibos (por año, mes, empleado)
+-  Visualización y descarga de recibos PDF
+-  Protección por permisos de acceso (`IsAuthenticated`)
+-  Filtros por URL query
+-  Datos de ejemplo para pruebas
 
 ---
 
@@ -38,45 +38,41 @@ dlab-talents/
 
 ### 1. Variables de entorno
 
-Crea un archivo `.env` con tus credenciales:
+Crea un archivo `.env` con tus credenciales (No se ignoro el archivo .env para facilitar la ejecucion):
 
 ```env
-DEBUG=True
+DB_NAME=dlab_db
+DB_USER=postgres
+DB_PASSWORD=postgres
 DB_HOST=db
-DB_NAME=dtalents
-DB_USER=dtalent_user
-DB_PASSWORD=123456
 DB_PORT=5432
 ```
 
 ---
 
-### 2. Levantar el proyecto (con Docker)
+### 2. Inicialización automática del entorno
+
+Ejecutar los siguientes comandos o directamente setup.bat (Windows CMD o PowerShell) o setup.sh(Git Bash / WSL / Linux / macOS):
 
 ```bash
-docker-compose up --build
+
+
+docker-compose down -v
+docker-compose build --no-cache
+docker-compose up -d
+docker-compose exec web python manage.py migrate
+docker-compose exec web python manage.py createsuperuser 
+docker-compose exec web python manage.py load_data
+
+
 ```
 
 > Accede a la API en: `http://localhost:8000`
 
----
-
-##  Datos de prueba
-
-Puedes cargar datos de ejemplo (usuarios, recibos y PDFs) con:
-
-```bash
-docker-compose exec web python manage.py load_data
-```
-
-Este comando:
-- Crea 10 usuarios de ejemplo.
-- Crea 10 recibos (uno por usuario).
-- Asocia un archivo PDF falso a cada recibo.
 
 ---
 
-##  Autenticación
+## 🔑 Autenticación
 
 ### Endpoint de login:
 
@@ -150,3 +146,5 @@ Los tests incluyen:
 - Validación de permisos
 
 ---
+
+

@@ -19,5 +19,3 @@ docker-compose exec web python manage.py createsuperuser || echo Ya existe
 
 echo  7. Cargando datos de prueba...
 docker-compose exec web python manage.py load_data
-
-echo  Listo. Accede a http://localhost:8000/admin
